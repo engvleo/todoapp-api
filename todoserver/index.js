@@ -37,7 +37,16 @@ app.post("/add", (req, res) => {
             console.log(err);
         });
 })
+app.get('/',(req,res)=>{
+    Todo.find({}, (err, result) => {
+        if (err) {
+          res.send(err);
+        } else {
+          res.send(result);
+        }
+      })
 
+})
 app.delete('/delete/:id', async (req, red) => {
     const id = req.params.id;
     try {
